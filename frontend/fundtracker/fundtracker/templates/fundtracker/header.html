@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<!--<script type="text/javascript" src="district.js"></script>-->
+
+    <title>FundTracker</title>
+</head>
+<body>
+    <nav class="main-header navbar navbar-expand navbar-dark navbar-dark">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item text-white" role="button"><div class="nav-link" >Balance:- {{ wallet }}</div></li>
+        <li class="nav-item">
+            <a class="nav-link" data-slide="true" href="{% url 'logout' %}" role="button">
+                
+                  Log Out
+                
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <br>
+      <br>
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+      
+      <span class="brand-text font-weight-light">Fund Tracker</span>
+    </a>
+  
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+       
+        <div class="info">
+          <a href="#" class="d-block">
+            {{ email }}
+          </a>
+        </div>
+      </div>
+  
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               {% if role == 'Admin' %}
+               <li class="nav-item">
+            <a href="{% url 'adduser' %}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Add Admin/Sub-admin
+              </p>
+            </a>
+          </li>
+          {% endif %}
+          {% if role == 'Sub-Admin' %}
+          <li class="nav-item">
+            <a href="{% url 'addcont' %}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Add Contractor
+              </p>
+            </a>
+          </li>
+          {% endif %}
+          {% if role == 'Sub-Admin' or role == 'Admin' %}
+          <li class="nav-item">
+            <a href="{% url 'maketran' %}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Make Transactions
+              </p>
+            </a>
+          </li>
+          {% endif %}
+
+          <li class="nav-item">
+            <a href="{% url 'viewtran' %}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                View Transactions
+              </p>
+            </a>
+          </li>
+          {% if role == 'Sub-Admin' or role == 'Admin' %}
+          <li class="nav-item">
+            <a href="{% url 'analysis' %}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Analysis
+              </p>
+            </a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a href="{% url 'aboutus' %}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                About
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+{% block main%} {%endblock%}
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+
+</body>
+</html>

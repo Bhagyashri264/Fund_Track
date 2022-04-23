@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-dark navbar-dark">
+        <div class="container">
+          
+            <span class="brand-text font-weight-bold text-white">Fund Tracker</span>
+          
+          <!-- Left navbar links -->
+
+        </div>
+      </nav>
+      <br>
+      <br>
+    <div class="container-fluid">
+    <div class="wrapper">
+    <div class="col-md-5" style="margin:auto;">
+    <div class="card card-dark">
+        <div class="card-header">
+        <h3 class="card-title">Log In</h3>
+        </div>
+        
+        
+        <form action="" method="post">
+            {% csrf_token %} 
+        <div class="card-body">
+        <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+        </div>
+        <label for="role">Role</label>
+        <select class="form-control" name="role" id="role">
+            <option>Admin</option>
+            <option>Sub-Admin</option>
+            <option>Contractor</option>
+        </select>
+
+        
+        </div>
+        
+        <div class="card-footer">
+        <button type="submit" class="btn btn-dark">Log In</button>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+</html>
